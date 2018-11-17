@@ -34,4 +34,5 @@ while True:
     max_humidity += HUMIDITY_OFFSET
     print("Current humidity is %f" % max_humidity)
     control_humidifier(max_humidity <= HUMIDITY_THRESHOLD)
-    
+    print ("next check in 5 min")
+    time.sleep(300)
