@@ -1,0 +1,5 @@
+RPi.GPIO
+git+https://github.com/adafruit/Adafruit_Python_GPIO.git@060f6d6782768b1f6a4713f369db2740e79ec61e
+ipython
+autopep8
+requests
