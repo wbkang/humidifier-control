@@ -22,6 +22,8 @@ def control_humidifier(onoff):
         print("Controlling humidifier %s" % onoff)
         requests.post("http://localhost:6001/lights/humidifier/%s" % ("on" if onoff else "off"))
         humidifier_status = onoff
+        return True
+    return False
 
 while True:
     max_humidity = 0
@@ -33,6 +35,12 @@ while True:
     
     max_humidity += HUMIDITY_OFFSET
     print("Current humidity is %f" % max_humidity)
-    control_humidifier(max_humidity <= HUMIDITY_THRESHOLD)
-    print ("next check in 5 min")
-    time.sleep(300)
+    onoff = max_humidity <= HUMIDITY_THRESHOLD
+    changed = control_humidifier(onoff)
+    if changed and not onoff:
+        # just changed to OFF
+        print("Just turned off, waiting for 30 minutes before next check")
+        time.sleep(60 * 30)
+    else:
+        print ("next check in 5 min")
+        time.sleep(300)
