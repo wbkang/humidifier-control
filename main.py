@@ -8,7 +8,7 @@ import requests
 
 DHT11_PIN = 4
 HUMIDITY_OFFSET = 10 # add this much to the REAL humidity
-HUMIDITY_THRESHOLD = 50
+HUMIDITY_THRESHOLD = 40
 
 GPIO.setmode(GPIO.BCM)
 
